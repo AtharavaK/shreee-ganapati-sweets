@@ -1,0 +1,49 @@
+<section id="products">
+  <span class="section-label reveal">Handcrafted Selections</span>
+  <h2 class="section-title reveal">Our <em>Sweets</em></h2>
+  <div class="divider"></div>
+  <div class="products-grid" id="productList"></div>
+</section>
+
+<script>
+  // Render product cards once products data is available
+  (function renderProducts() {
+    const grid = document.getElementById('productList');
+    if (!grid || typeof products === 'undefined') return;
+
+    products.forEach((p, i) => {
+      const card = document.createElement('div');
+      card.className = 'card reveal';
+      card.style.transitionDelay = (i * 0.07) + 's';
+      card.innerHTML = `
+        <div class="card-img-wrap">
+          ${p.image
+            ? `<img
+                src="images/${p.image}"
+                alt="${p.name}"
+                class="card-photo"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+               >
+               <span class="card-emoji card-emoji-fallback" style="display:none">${p.emoji}</span>`
+            : `<span class="card-emoji">${p.emoji}</span>`
+          }
+          ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
+        </div>
+        <div class="card-body">
+          <h3>${p.name}</h3>
+          <p>${p.description}</p>
+        </div>
+        <div class="card-footer">
+          <div class="price">₹${p.price}<span> / box</span></div>
+          <button class="card-btn" onclick="quickOrder('${p.name}')">Order</button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // Re-observe newly added cards
+    if (window._observer) {
+      grid.querySelectorAll('.reveal').forEach(el => window._observer.observe(el));
+    }
+  })();
+</script>
