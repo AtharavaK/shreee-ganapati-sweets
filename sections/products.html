@@ -2,12 +2,24 @@
   <span class="section-label reveal">Handcrafted Selections</span>
   <h2 class="section-title reveal">Our <em>Sweets</em></h2>
   <div class="divider"></div>
+
+  <!-- Minimum Order Banner -->
+  <div class="min-order-banner reveal">
+    <span class="min-order-icon">🛒</span>
+    <span>Minimum order: <strong id="minOrderLabel"></strong> &nbsp;|&nbsp; Pricing is <strong>per kg</strong> &nbsp;|&nbsp; Fresh made on order</span>
+  </div>
+
   <div class="products-grid" id="productList"></div>
 </section>
 
 <script>
-  // Render product cards once products data is available
   (function renderProducts() {
+    // Set minimum order label from config
+    const minLabel = document.getElementById('minOrderLabel');
+    if (minLabel && typeof MIN_ORDER_LABEL !== 'undefined') {
+      minLabel.textContent = MIN_ORDER_LABEL;
+    }
+
     const grid = document.getElementById('productList');
     if (!grid || typeof products === 'undefined') return;
 
@@ -34,14 +46,13 @@
           <p>${p.description}</p>
         </div>
         <div class="card-footer">
-          <div class="price">₹${p.price}<span> / box</span></div>
+          <div class="price">₹${p.price}<span> / kg</span></div>
           <button class="card-btn" onclick="quickOrder('${p.name}')">Order</button>
         </div>
       `;
       grid.appendChild(card);
     });
 
-    // Re-observe newly added cards
     if (window._observer) {
       grid.querySelectorAll('.reveal').forEach(el => window._observer.observe(el));
     }
