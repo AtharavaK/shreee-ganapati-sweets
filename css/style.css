@@ -601,3 +601,27 @@ footer span { color: var(--gold); }
   font-weight: 700;
 }
 .min-order-icon { font-size: 1.1rem; }
+
+/* ── MINIMUM ORDER BANNER ── */
+.min-order-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--maroon-dark), var(--maroon));
+  color: rgba(255,255,255,0.9);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  padding: 14px 28px;
+  border-radius: 8px;
+  max-width: 700px;
+  margin: 0 auto 48px;
+  border: 1px solid rgba(201,147,58,0.3);
+  letter-spacing: 0.02em;
+}
+.min-order-banner strong { color: var(--gold-light); }
+.min-order-icon { font-size: 1.1rem; }
+
+@media (max-width: 600px) {
+  .min-order-banner { font-size: 0.8rem; padding: 12px 16px; text-align: center; }
+}
