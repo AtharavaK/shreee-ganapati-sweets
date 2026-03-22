@@ -580,3 +580,24 @@ footer span { color: var(--gold); }
   }
 }
 
+/* ── MINIMUM ORDER BANNER ── */
+.min-order-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1px solid var(--cream-dark);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  padding: 12px 22px;
+  margin-bottom: 40px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-light);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.min-order-banner strong {
+  color: var(--maroon);
+  font-weight: 700;
+}
+.min-order-icon { font-size: 1.1rem; }
